@@ -7,8 +7,8 @@
 class MacosWebsiteBlocker < Formula
   desc "Hosts-layer website blocker for macOS (Chrome, Safari, Firefox)"
   homepage "https://github.com/Shoirhi/macos-website-blocker"
-  url "https://github.com/Shoirhi/macos-website-blocker/releases/download/v1.1.0/macos-website-blocker-1.1.0.tar.gz"
-  sha256 "38f6f1232b923e5bca6db0d5809aa2300a7f1a1ad96c502d1d6386492e106d6a"
+  url "https://github.com/Shoirhi/macos-website-blocker/releases/download/v1.2.0/macos-website-blocker-1.2.0.tar.gz"
+  sha256 "86c8044f7d2841e4b4358e65139a75bc01943107ca6f361b8e61526ba807da70"
   license "MIT"
 
   depends_on :macos
@@ -42,6 +42,14 @@ class MacosWebsiteBlocker < Formula
         sudo macos-website-blocker-add x.com reddit.com
         macos-website-blocker-status
         sudo macos-website-blocker-lock
+
+      The config profiles (close the DoH bypass, plus an optional Cloudflare
+      for Families DNS filter) are staged under libexec, not your working
+      directory. Reveal one in Finder, then double-click it to install:
+
+        open -R "#{opt_libexec}/profiles/macos-website-blocker-doh.mobileconfig"
+
+      Approve it in System Settings > General > Device Management.
 
       To remove everything:
 
